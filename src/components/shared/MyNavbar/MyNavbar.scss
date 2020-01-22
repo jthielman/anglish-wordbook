@@ -1,3 +1,14 @@
 .MyNavbar {
-  display: blaock;
+  display: block;
+  background-color: darkred;
+}
+
+button.btn-outline-dark {
+  border-color: darkgray;
+}
+
+a.nav-brand {
+  color: beige;
+  font-weight: bold;
+  font-size: xx-large;
 }

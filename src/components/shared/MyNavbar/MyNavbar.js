@@ -59,7 +59,7 @@ class MyNavbar extends React.Component {
     };
     return (
       <div className="MyNavbar">
-        <nav className="navbar navbar-expand navbar-light bg-light">
+        <nav className="navbar navbar-expand navbar-light">
           <Link className="nav-brand" to="/">Anglish Wordbook</Link>
           { buildNavbar() }
         </nav>

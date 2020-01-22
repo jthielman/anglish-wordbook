@@ -1,5 +1,6 @@
 @import './variables';
 @import '~bootstrap/dist/css/bootstrap.min.css';
+@import url('https://fonts.googleapis.com/css?family=Averia+Serif+Libre&display=swap');
 
 body {
   margin: 0;
@@ -9,6 +10,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: $mahbackgroundcolor;
+  font-family: 'Averia Serif Libre', serif;
 }
 
 code {

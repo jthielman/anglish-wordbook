@@ -20,4 +20,6 @@ const getWords = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-export default { getWords };
+const getOneWord = (wordId) => axios.get(`${baseUrl}/words/${wordId}.json`);
+
+export default { getWords, getOneWord };

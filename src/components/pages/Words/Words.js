@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-import './Words.scss';
 import wordData from '../../../helpers/data/wordData';
+
+import HitWord from '../../shared/HitWord/HitWord';
+
+import './Words.scss';
 
 class Words extends React.Component {
   state = {
@@ -29,7 +32,9 @@ class Words extends React.Component {
         <h1>Words</h1>
         { user ? <Link className='btn' to={`/words/${wordId}/adight`}>adight</Link> : <div>you logged out</div> }
         <Link className='btn' to={`/words/${wordId}`}>one word</Link>
-        <div>{this.state.words.map((word) => <h6 key={word.id}>{word.word}</h6>)}</div>
+        <div>
+          { this.state.words.map((word) => <HitWord key={word.id} word={word}>{word.word}</HitWord>) }
+        </div>
       </div>
     );
   }

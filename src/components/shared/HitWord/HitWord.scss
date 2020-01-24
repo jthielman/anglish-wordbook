@@ -1,0 +1,16 @@
+@import '../../../styles/variables';
+
+.HitWord {
+  display: block;
+
+  .card {
+    .card-body {
+      text-align: left;
+      background-color: $mahbackgroundcolor;
+
+      a {
+        color: $wordcolor;
+      }
+    }
+  }
+}

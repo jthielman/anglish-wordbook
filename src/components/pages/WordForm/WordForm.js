@@ -1,30 +1,32 @@
-import React from 'react';
+import React from "react";
 
-import './WordForm.scss';
+import "./WordForm.scss";
 
 class WordForm extends React.Component {
   render() {
     return (
-      <div className='WordForm container'>
-        { this.props.path === '/words/new' ? <h1>New Word</h1> : <h1>Adight Word</h1> }
+      <div className="WordForm container">
+        {this.props.path === "/words/new" ? (
+          <h1>New Word</h1>
+        ) : (
+          <h1>Adight Word</h1>
+        )}
         <form>
-          <div className='form-row'>
-            <div className='form-group row col-md-5'>
-              <label htmlFor='inputWord' className='col-sm-3 col-form-label'>Word:</label>
-              <div className='col-sm-9'>
-                <input type='text' className='form-control' id='inputWord' />
+          <div className="form-row">
+            <div className="form-group  col-md-4 text-left">
+              <label htmlFor="inputWord" className=" col-form-label">
+                Word:
+              </label>
+              <div className="">
+                <input type="text" className="form-control" id="inputWord" />
               </div>
             </div>
-            <div className='form-group col-md-4'>
-              <input className='form-check-input' type='checkbox' id='isCraftedCheckbox' />
-              <label className='form-check-label' htmlFor='isCraftedCheckbox'>
-                Crafted for Anglish?
+            <div className="form-group  col-md-4 text-left">
+              <label htmlFor="inputKind" className=" col-form-label">
+                Kind:
               </label>
-            </div>
-            <div className='form-group row'>
-              <label htmlFor='inputKind' className='col-sm-3 col-form-label'>Kind:</label>
-              <div className='col-sm-9'>
-                <select className='form-control' id='inputKind' defaultValue=''>
+              <div className="">
+                <select className="form-control" id="inputKind" defaultValue="">
                   <option></option>
                   <option>Noun</option>
                   <option>Verb</option>
@@ -38,62 +40,108 @@ class WordForm extends React.Component {
                 </select>
               </div>
             </div>
-          </div>
-          <div className='form-row'>
-            <div className='form-group row col-md-6'>
-              <label htmlFor='inputForebear' className='col-sm-4 col-form-label'>Forebear:</label>
-              <div className='col-sm-8'>
-                <input type='text' className='form-control' id='inputForebear' />
+            <div className="form-group col-md-4 align-self-end pb-2">
+              <div className='text-sm-left text-md-center pl-4'>
+                <input
+                  className="form-check-input  "
+                  type="checkbox"
+                  id="isCraftedCheckbox"
+                />
+                <label className="form-check-label" htmlFor="isCraftedCheckbox">
+                  Crafted for Anglish?
+                </label>
               </div>
             </div>
-            <div className='form-group row col-md-6'>
-              <label htmlFor='inputWhence' className='col-sm-3 col-form-label'>Whence:</label>
-              <div className='col-sm-9'>
-                <select className='form-control' id='inputWhence' defaultValue=''>
+          </div>
+          <div className="form-row">
+            <div className="form-group text-left col-md-6">
+              <label
+                htmlFor="inputForebear"
+                className=" col-form-label"
+              >
+                Forebear:
+              </label>
+              <div className="">
+                <input
+                  type="text"
+                  className="form-control"
+                  id="inputForebear"
+                />
+              </div>
+            </div>
+            <div className="form-group text-left col-md-6">
+              <label htmlFor="inputWhence" className=" col-form-label">
+                Whence:
+              </label>
+              <div className="">
+                <select
+                  className="form-control"
+                  id="inputWhence"
+                  defaultValue=""
+                >
                   <option></option>
-                  <option value='NE'>New English (Modern English)</option>
-                  <option value='ME'>Middle English</option>
-                  <option value='OE'>Old English</option>
-                  <option value='WF'>West Frisian</option>
-                  <option value='LG'>Low German</option>
-                  <option value='HG'>High German</option>
-                  <option value='DF'>Dutch & Frankish</option>
-                  <option value='N'>Norse</option>
-                  <option value='C'>Celtic</option>
-                  <option value='I'>Italic</option>
-                  <option value='H'>Hellenic</option>
-                  <option value='Þ'>Orþeech (Proto-Germanic‍)</option>
-                  <option value='O'>other (Slavic, Algic, and so on)</option>
+                  <option value="NE">New English (Modern English)</option>
+                  <option value="ME">Middle English</option>
+                  <option value="OE">Old English</option>
+                  <option value="WF">West Frisian</option>
+                  <option value="LG">Low German</option>
+                  <option value="HG">High German</option>
+                  <option value="DF">Dutch & Frankish</option>
+                  <option value="N">Norse</option>
+                  <option value="C">Celtic</option>
+                  <option value="I">Italic</option>
+                  <option value="H">Hellenic</option>
+                  <option value="Þ">Orþeech (Proto-Germanic‍)</option>
+                  <option value="O">other (Slavic, Algic, and so on)</option>
                 </select>
               </div>
             </div>
           </div>
-          <div className='form-row'>
-            <div className='form-group col-md-6'>
-              <label htmlFor='inputCity'>City</label>
-              <input type='text' className='form-control' id='inputCity' />
-            </div>
-            <div className='form-group col-md-4'>
-              <label htmlFor='inputState'>State</label>
-              <select id='inputState' className='form-control' defaultValue='Choose...'>
-                <option>Choose...</option>
-                <option>...</option>
-              </select>
-            </div>
-            <div className='form-group col-md-2'>
-              <label htmlFor='inputZip'>Zip</label>
-              <input type='text' className='form-control' id='inputZip' />
-            </div>
-          </div>
-          <div className='form-group'>
-            <div className='form-check'>
-              <input className='form-check-input' type='checkbox' id='gridCheck' />
-              <label className='form-check-label' htmlFor='gridCheck'>
-                Check me out
+          <div className="form-row">
+            <div className="form-group text-left col-md-12">
+              <label className="" htmlFor="inputForebearByspel">
+                Forebear byspel:
               </label>
+              <div className="">
+                <textarea
+                  id="inputForebearByspel"
+                  className="form-control"
+                  rows="3"
+                ></textarea>
+              </div>
             </div>
           </div>
-          <button type='submit' className='btn btn-primary'>Sign in</button>
+          <div className="form-row">
+            <div className="form-group text-left col-md-12">
+              <label className="" htmlFor="inputMeaning">
+                Meaning:
+              </label>
+              <div className="">
+                <textarea
+                  id="inputMeaning"
+                  className="form-control"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <div className="form-row">
+            <div className="form-group text-left col-md-12">
+              <label className="" htmlFor="inputNotes">
+                Notes:
+              </label>
+              <div className="">
+                <textarea
+                  id="inputNotes"
+                  className="form-control"
+                  rows="3"
+                ></textarea>
+              </div>
+            </div>
+          </div>
+          <button type="submit" className="btn btn-outline-dark">
+            Eke to wordhoard
+          </button>
         </form>
       </div>
     );

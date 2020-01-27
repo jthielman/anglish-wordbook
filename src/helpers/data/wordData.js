@@ -22,4 +22,6 @@ const getWords = () => new Promise((resolve, reject) => {
 
 const getOneWord = (wordId) => axios.get(`${baseUrl}/words/${wordId}.json`);
 
-export default { getWords, getOneWord };
+const stowWord = (wordInfo) => axios.post(`${baseUrl}/words.json`, wordInfo);
+
+export default { getWords, getOneWord, stowWord };

@@ -21,6 +21,7 @@ class OneWord extends React.Component {
   componentDidMount() {
     const { wordId } = this.props.match.params;
     this.getWord(wordId);
+    console.log(firebase.auth().currentUser.uid);
   }
 
   render() {
@@ -31,11 +32,11 @@ class OneWord extends React.Component {
       <div className='OneWord container'>
         <h2>{word.word}</h2>
         <p>{word.kind}</p>
-        <p>Forebear: {word.forebear} ({word.whence}{ word.isCrafted ? ' 🔨' : ''})</p>
-        { word.forebearExample !== '' && <p>{word.forebearExample}</p>}
+        <p>Forebear: {word.forebear} ({word.whence}{ word.isCrafted && ' 🔨' })</p>
+        { word.forebearExample !== '' && <p>{word.forebearExample}</p> }
         <p>Meaning: {word.meaning}</p>
-        { word.notes !== '' && <p>Notes: {word.notes}</p>}
-        { user ? <Link className='btn' to={`/words/${wordId}/adight`}>adight</Link> : <div>you logged out</div> }
+        { word.notes !== '' && <p>Notes: {word.notes}</p> }
+        { user.uid === word.uid ? <Link className='btn btn-outline-dark' to={`/words/${wordId}/adight`}>Adight</Link> : '' }
       </div>
     );
   }

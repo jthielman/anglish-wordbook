@@ -17,6 +17,26 @@ class WordForm extends React.Component {
     notes: '',
   }
 
+  componentDidMount() {
+    const { wordId } = this.props.match.params;
+    if (wordId) {
+      wordData.getOneWord(wordId)
+        .then((response) => {
+          this.setState({
+            word: response.data.word,
+            meaning: response.data.meaning,
+            kind: response.data.kind,
+            forebear: response.data.forebear,
+            forebearExample: response.data.forebearExample,
+            whence: response.data.whence,
+            isCrafted: response.data.isCrafted,
+            notes: response.data.notes,
+          });
+        })
+        .catch((err) => console.error('error from get one word', err));
+    }
+  }
+
   wordChange = (e) => {
     e.preventDefault();
     this.setState({ word: e.target.value });
@@ -60,6 +80,25 @@ class WordForm extends React.Component {
     this.setState({ notes: e.target.value });
   }
 
+  adightWordClick = (e) => {
+    e.preventDefault();
+    const { wordId } = this.props.match.params;
+    const adightWord = {
+      word: this.state.word,
+      meaning: this.state.meaning,
+      kind: this.state.kind,
+      forebear: this.state.forebear,
+      forebearExample: this.state.forebearExample,
+      whence: this.state.whence,
+      isCrafted: this.state.isCrafted,
+      notes: this.state.notes,
+      uid: authData.getUid(),
+    };
+    wordData.updateWord(wordId, adightWord)
+      .then(() => this.props.history.push(`/words/${this.props.match.params.wordId}`))
+      .catch((err) => console.error('error from edit word', err));
+  }
+
   stowWordClick = (e) => {
     e.preventDefault();
     const newWord = {
@@ -79,6 +118,17 @@ class WordForm extends React.Component {
   }
 
   render() {
+    const {
+      word,
+      meaning,
+      kind,
+      forebear,
+      forebearExample,
+      whence,
+      isCrafted,
+      notes,
+    } = this.state;
+    const { wordId } = this.props.match.params;
     return (
       <div className='WordForm container'>
         {this.props.path === '/words/new' ? (
@@ -93,7 +143,7 @@ class WordForm extends React.Component {
                 Word:
               </label>
               <div>
-                <input type='text' className='form-control' id='inputWord' onChange={this.wordChange} />
+                <input type='text' className='form-control' id='inputWord' value={word} onChange={this.wordChange} />
               </div>
             </div>
             <div className='form-group  col-md-4 text-left'>
@@ -101,7 +151,7 @@ class WordForm extends React.Component {
                 Kind:
               </label>
               <div>
-                <select className='form-control' id='inputKind' onChange={this.kindChange}>
+                <select className='form-control' id='inputKind' value={kind} onChange={this.kindChange}>
                   <option></option>
                   <option>Noun</option>
                   <option>Verb</option>
@@ -121,6 +171,7 @@ class WordForm extends React.Component {
                   className='form-check-input'
                   type='checkbox'
                   id='isCraftedCheckbox'
+                  checked={isCrafted}
                   onChange={this.isCraftedChange}
                 />
                 <label className='form-check-label' htmlFor='isCraftedCheckbox'>
@@ -142,6 +193,7 @@ class WordForm extends React.Component {
                   type='text'
                   className='form-control'
                   id='inputForebear'
+                  value={forebear}
                   onChange={this.forebearChange}
                 />
               </div>
@@ -154,6 +206,7 @@ class WordForm extends React.Component {
                 <select
                   className='form-control'
                   id='inputWhence'
+                  value={whence}
                   onChange={this.whenceChange}
                 >
                   <option></option>
@@ -184,6 +237,7 @@ class WordForm extends React.Component {
                   id='inputForebearByspel'
                   className='form-control'
                   rows='3'
+                  value={forebearExample}
                   onChange={this.forebearExampleChange}
                 ></textarea>
               </div>
@@ -199,6 +253,7 @@ class WordForm extends React.Component {
                   id='inputMeaning'
                   className='form-control'
                   rows='3'
+                  value={meaning}
                   onChange={this.meaningChange}
                 ></textarea>
               </div>
@@ -214,14 +269,16 @@ class WordForm extends React.Component {
                   id='inputNotes'
                   className='form-control'
                   rows='3'
+                  value={notes}
                   onChange={this.notesChange}
                 ></textarea>
               </div>
             </div>
           </div>
-          <button type='submit' className='btn btn-outline-dark' onClick={this.stowWordClick}>
-            Eke to wordhoard
-          </button>
+          {wordId
+            ? <button type='submit' className='btn btn-outline-secondary' onClick={this.adightWordClick}>Adight word</button>
+            : <button type='submit' className='btn btn-outline-dark' onClick={this.stowWordClick}>Eke to wordhoard</button>
+          }
         </form>
       </div>
     );

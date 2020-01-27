@@ -48,7 +48,11 @@ class WordForm extends React.Component {
   }
 
   isCraftedChange = (e) => {
-    console.log(e.target.value);
+    if (e.target.checked) {
+      this.setState({ isCrafted: true });
+    } else {
+      this.setState({ isCrafted: false });
+    }
   }
 
   notesChange = (e) => {
@@ -70,7 +74,7 @@ class WordForm extends React.Component {
       uid: authData.getUid(),
     };
     wordData.stowWord(newWord)
-      .then((wordId) => this.props.history.push(`/words/${wordId}`))
+      .then((response) => this.props.history.push(`/words/${response.data.name}`))
       .catch((err) => console.error('error from stow word', err));
   }
 

@@ -26,6 +26,8 @@ const stowWord = (wordInfo) => axios.post(`${baseUrl}/words.json`, wordInfo);
 
 const updateWord = (wordId, newWordInfo) => axios.put(`${baseUrl}/words/${wordId}.json`, newWordInfo);
 
+const deleteWord = (wordId) => axios.delete(`${baseUrl}/words/${wordId}.json`);
+
 export default {
-  getWords, getOneWord, stowWord, updateWord,
+  getWords, getOneWord, stowWord, updateWord, deleteWord,
 };

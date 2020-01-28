@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
@@ -11,6 +12,7 @@ import './Words.scss';
 class Words extends React.Component {
   state = {
     words: [],
+    adweshWord: PropTypes.func,
   }
 
   getWords = () => {
@@ -23,13 +25,19 @@ class Words extends React.Component {
     this.getWords();
   }
 
+  /* adweshWord = (wordId) => {
+    wordData.deleteWord(wordId)
+      .then(() => this.getWords())
+      .catch((err) => console.error('error deleting word', err));
+  } */
+
   render() {
     const user = firebase.auth().currentUser;
     return (
       <div className='Words'>
         <h1>Words</h1>
         <div>
-          { this.state.words.map((word) => <HitWord key={word.id} word={word} user={user}>{word.word}</HitWord>) }
+          { this.state.words.map((word) => <HitWord key={word.id} word={word} user={user}/*  adweshWord={this.adweshWord} */>{word.word}</HitWord>) }
         </div>
       </div>
     );

@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import firebase from 'firebase/app';
-import 'firebase/auth';
 
+import authData from '../../../helpers/data/authData';
 import wordData from '../../../helpers/data/wordData';
 
 import HitWord from '../../shared/HitWord/HitWord';
@@ -25,14 +24,8 @@ class Words extends React.Component {
     this.getWords();
   }
 
-  /* adweshWord = (wordId) => {
-    wordData.deleteWord(wordId)
-      .then(() => this.getWords())
-      .catch((err) => console.error('error deleting word', err));
-  } */
-
   render() {
-    const user = firebase.auth().currentUser;
+    const user = authData.getUser();
     return (
       <div className='Words'>
         <h1>Words</h1>

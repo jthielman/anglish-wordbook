@@ -47,7 +47,7 @@ class HitWord extends React.Component {
               <h5 className='card-title'><Link to={`/words/${word.id}`}>{word.word}</Link></h5>
               <span>{user && this.showAdightButton(word, user)}</span>
             </div>
-            <div>
+            <div className='d-flex justify-content-between'>
               <h6 className='card-subtitle mb-2 text-muted'>{word.kind}</h6>
               <span>{user && this.showAdweshButton(word, user)}</span>
             </div>

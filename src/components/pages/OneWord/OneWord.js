@@ -1,9 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import firebase from 'firebase/app';
-import 'firebase/auth';
 
+import authData from '../../../helpers/data/authData';
 import wordData from '../../../helpers/data/wordData';
 
 import './OneWord.scss';
@@ -38,10 +37,24 @@ class OneWord extends React.Component {
       });
   }
 
+  showAdightButton = (word, user, wordId) => {
+    if (word.uid === user.uid) {
+      return <Link className='btn btn-outline-dark' to={`/words/${wordId}/adight`}>Adight</Link>;
+    }
+    return '';
+  }
+
+  showAdweshButton = (word, user) => {
+    if (word.uid === user.uid) {
+      return <button className='btn btn-outline-danger' onClick={this.deleteWordClick}>Adwesh</button>;
+    }
+    return '';
+  }
+
   render() {
     const { wordId } = this.props.match.params;
     const { word } = this.state;
-    const user = firebase.auth().currentUser;
+    const user = authData.getUser();
     return (
       <div className='OneWord container'>
         <h2>{word.word}</h2>
@@ -50,8 +63,8 @@ class OneWord extends React.Component {
         { word.forebearExample !== '' && <p>{word.forebearExample}</p> }
         <p>Meaning: {word.meaning}</p>
         { word.notes !== '' && <p>Notes: {word.notes}</p> }
-        { user.uid === word.uid && <Link className='btn btn-outline-dark' to={`/words/${wordId}/adight`}>Adight</Link> }
-        { user.uid === word.uid && <button className='btn btn-outline-danger' onClick={this.deleteWordClick}>Adwesh</button> }
+        { user && this.showAdightButton(word, user, wordId) }
+        { user && this.showAdweshButton(word, user) }
       </div>
     );
   }

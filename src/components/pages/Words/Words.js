@@ -1,7 +1,7 @@
 import React from 'react';
-import firebase from 'firebase/app';
-import 'firebase/auth';
+import PropTypes from 'prop-types';
 
+import authData from '../../../helpers/data/authData';
 import wordData from '../../../helpers/data/wordData';
 
 import HitWord from '../../shared/HitWord/HitWord';
@@ -11,6 +11,7 @@ import './Words.scss';
 class Words extends React.Component {
   state = {
     words: [],
+    adweshWord: PropTypes.func,
   }
 
   getWords = () => {
@@ -24,12 +25,12 @@ class Words extends React.Component {
   }
 
   render() {
-    const user = firebase.auth().currentUser;
+    const user = authData.getUser();
     return (
       <div className='Words'>
         <h1>Words</h1>
         <div>
-          { this.state.words.map((word) => <HitWord key={word.id} word={word} user={user}>{word.word}</HitWord>) }
+          { this.state.words.map((word) => <HitWord key={word.id} word={word} user={user} adweshWord={this.props.adweshWord} getWords={this.getWords}>{word.word}</HitWord>) }
         </div>
       </div>
     );

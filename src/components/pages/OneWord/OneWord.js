@@ -11,6 +11,9 @@ import './OneWord.scss';
 class OneWord extends React.Component {
   state = {
     word: {},
+  }
+
+  static propTypes = {
     adweshWord: PropTypes.func,
   }
 

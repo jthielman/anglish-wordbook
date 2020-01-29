@@ -37,7 +37,7 @@ class Words extends React.Component {
       <div className='Words'>
         <h1>Words</h1>
         <div>
-          { this.state.words.map((word) => <HitWord key={word.id} word={word} user={user}/*  adweshWord={this.adweshWord} */>{word.word}</HitWord>) }
+          { this.state.words.map((word) => <HitWord key={word.id} word={word} user={user} adweshWord={this.props.adweshWord} getWords={this.getWords}>{word.word}</HitWord>) }
         </div>
       </div>
     );

@@ -12,14 +12,16 @@ class HitWord extends React.Component {
   static propTypes = {
     word: wordShape.wordShape,
     adweshWord: PropTypes.func,
+    getWords: PropTypes.func,
   }
 
-  /* deleteWordClick = (e) => {
+  deleteWordClick = (e) => {
     e.preventDefault();
     const { adweshWord, word } = this.props;
-    adweshWord(word.id);
+    adweshWord(word.id)
+      .then(() => this.props.getWords());
   }
- */
+
   showAdightButton = (word, user) => {
     if (word.uid === user.uid) {
       return <Link className='btn btn-outline-secondary btn-sm' to={`/words/${word.id}/adight`}>Adight</Link>;

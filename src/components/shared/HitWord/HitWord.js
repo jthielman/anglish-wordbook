@@ -40,7 +40,7 @@ class HitWord extends React.Component {
     const { word, user } = this.props;
 
     return (
-      <div className='HitWord container'>
+      <div className='HitWord'>
         <div className='card border-light mb-3'>
           <div className='card-body'>
             <div className='d-flex justify-content-between'>

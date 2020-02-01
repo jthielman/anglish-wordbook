@@ -8,9 +8,12 @@
   }
 
   .card {
+    height: 83%;
+
     .card-body {
       text-align: left;
       background-color: $mahbackgroundcolor;
+      overflow: hidden;
 
       h5 {
         a {

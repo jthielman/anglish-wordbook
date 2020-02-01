@@ -57,10 +57,10 @@ class OneWord extends React.Component {
     const user = authData.getUser();
     return (
       <div className='OneWord container'>
-        <h2>{word.word}</h2>
+        <h2><strong>{word.word}</strong></h2>
         <p>{word.kind}</p>
         <p>Forebear: {word.forebear} ({word.whence}{ word.isCrafted && ' 🔨' })</p>
-        { word.forebearExample !== '' && <p>{word.forebearExample}</p> }
+        { word.forebearExample !== '' && <p><em>{word.forebearExample}</em></p> }
         <p>Meaning: {word.meaning}</p>
         { word.notes !== '' && <p>Notes: {word.notes}</p> }
         { user && this.showAdightButton(word, user, wordId) }

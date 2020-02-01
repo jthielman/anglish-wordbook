@@ -56,9 +56,9 @@ class Words extends React.Component {
     return (
       <div className='Words container'>
         <h1>Words</h1>
-        <div className='row'>
+        <div className='row flex-nowrap justify-content-between'>
         <div><button className='btn btn-outline-secondary' onClick={this.getLastTen}>Former</button></div>
-        <div>
+        <div className='dictionary-container d-flex flex-column flex-wrap'>
           { this.state.words.map((word) => <HitWord key={word.id} word={word} user={user} adweshWord={this.props.adweshWord} getWords={this.getWords}>{word.word}</HitWord>) }
         </div>
         <div><button className='btn btn-outline-secondary' onClick={this.getNextTen}>After</button></div>

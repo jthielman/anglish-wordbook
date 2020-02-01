@@ -166,7 +166,7 @@ class WordForm extends React.Component {
               </div>
             </div>
             <div className='form-group col-md-4 align-self-end pb-2'>
-              <div className='text-sm-left text-md-center pl-4'>
+              <div className='text-sm-left text-md-center form-checkbox'>
                 <input
                   className='form-check-input'
                   type='checkbox'

@@ -9,16 +9,19 @@ import HitWord from '../../shared/HitWord/HitWord';
 import './Words.scss';
 
 class Words extends React.Component {
+  static propTypes = {
+    adweshWord: PropTypes.func,
+  }
+
   state = {
     words: [],
-    adweshWord: PropTypes.func,
     former: 'a',
     after: '',
   }
 
   getWords = () => {
     wordData.getTenWords(this.state.former)
-      .then((words) => this.setState({ words }))
+      .then((words) => this.setState({ words, after: words[9].word }))
       .catch((err) => console.error(err));
   }
 
@@ -28,20 +31,20 @@ class Words extends React.Component {
 
   getLastTen = (e) => {
     e.preventDefault();
-    this.setState({ after: this.state.words[0] });
+    this.setState({ after: this.state.words[0].word });
     wordData.getTenWords(this.state.former)
       .then((words) => {
-        this.setState({ words, former: words[0] });
+        this.setState({ words, former: words[0].word });
       })
       .catch((err) => console.error('error in getLastTen', err));
   }
 
   getNextTen = (e) => {
     e.preventDefault();
-    this.setState({ former: this.state.words[0] });
+    this.setState({ former: this.state.words[0].word });
     wordData.getTenWords(this.state.after)
       .then((words) => {
-        this.setState({ words, after: words[9] });
+        this.setState({ words, after: words[9].word });
       })
       .catch((err) => console.error('error in getNextTen', err));
   }

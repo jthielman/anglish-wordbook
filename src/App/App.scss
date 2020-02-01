@@ -1,5 +1,14 @@
+@font-face {
+  font-family: 'Junicode';
+  src: local('Junicode'), url(../fonts/Junicode.ttf) format('truetype');
+}
+
 .App {
   text-align: center;
+
+  .container {
+    margin-top: 4em;
+  }
 }
 
 .App-logo {

@@ -15,14 +15,16 @@ class Words extends React.Component {
 
   state = {
     words: [],
-    former: 'a',
-    after: '',
+    startWord: 'a',
+    nextStartWord: '',
   }
 
   getWords = () => {
-    wordData.getTenWords(this.state.former)
-      .then((words) => this.setState({ words, after: words[9].word }))
-      .catch((err) => console.error(err));
+    wordData.getNextWords(this.state.startWord)
+      .then((words) => {
+        this.setState({ nextStartWord: words.pop().word, words });
+      })
+      .catch((err) => console.error('error in getWords', err));
   }
 
   componentDidMount() {
@@ -31,20 +33,20 @@ class Words extends React.Component {
 
   getLastTen = (e) => {
     e.preventDefault();
-    this.setState({ after: this.state.words[0].word });
-    wordData.getLastTenWords(this.state.words[0].word)
+    const currentStartWord = this.state.words[0].word;
+    this.setState({ nextStartWord: currentStartWord });
+    wordData.getFormerWords(currentStartWord)
       .then((words) => {
-        this.setState({ words, former: words[0].word });
+        this.setState({ nextStartWord: words.pop().word, words });
       })
       .catch((err) => console.error('error in getLastTen', err));
   }
 
   getNextTen = (e) => {
     e.preventDefault();
-    this.setState({ former: this.state.words[0].word });
-    wordData.getTenWords(this.state.after)
+    wordData.getNextWords(this.state.nextStartWord)
       .then((words) => {
-        this.setState({ words, after: words[9].word });
+        this.setState({ nextStartWord: words.pop().word, words });
       })
       .catch((err) => console.error('error in getNextTen', err));
   }

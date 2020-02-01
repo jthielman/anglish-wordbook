@@ -21,14 +21,14 @@ const getWords = () => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-const getTenWords = (startingWord) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/words.json?orderBy="word"&startAt="${startingWord}"&limitToFirst=10`)
+const getNextWords = (startingWord) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/words.json?orderBy="word"&startAt="${startingWord}"&limitToFirst=11`)
     .then((result) => {
-      const tenWordsObj = result.data;
+      const elevenWordsObj = result.data;
       const words = [];
-      if (tenWordsObj != null) {
-        Object.keys(tenWordsObj).forEach((wordId) => {
-          const newWord = tenWordsObj[wordId];
+      if (elevenWordsObj != null) {
+        Object.keys(elevenWordsObj).forEach((wordId) => {
+          const newWord = elevenWordsObj[wordId];
           newWord.id = wordId;
           words.push(newWord);
         });
@@ -38,14 +38,14 @@ const getTenWords = (startingWord) => new Promise((resolve, reject) => {
     .catch((err) => reject(err));
 });
 
-const getLastTenWords = (endingWord) => new Promise((resolve, reject) => {
-  axios.get(`${baseUrl}/words.json?orderBy="word"&endAt="${endingWord}"&limitToLast=10`)
+const getFormerWords = (endingWord) => new Promise((resolve, reject) => {
+  axios.get(`${baseUrl}/words.json?orderBy="word"&endAt="${endingWord}"&limitToLast=11`)
     .then((result) => {
-      const tenWordsObj = result.data;
+      const elevenWordsObj = result.data;
       const words = [];
-      if (tenWordsObj != null) {
-        Object.keys(tenWordsObj).forEach((wordId) => {
-          const newWord = tenWordsObj[wordId];
+      if (elevenWordsObj != null) {
+        Object.keys(elevenWordsObj).forEach((wordId) => {
+          const newWord = elevenWordsObj[wordId];
           newWord.id = wordId;
           words.push(newWord);
         });
@@ -64,5 +64,5 @@ const updateWord = (wordId, newWordInfo) => axios.put(`${baseUrl}/words/${wordId
 const deleteWord = (wordId) => axios.delete(`${baseUrl}/words/${wordId}.json`);
 
 export default {
-  getWords, getOneWord, stowWord, updateWord, deleteWord, getTenWords, getLastTenWords,
+  getWords, getOneWord, stowWord, updateWord, deleteWord, getNextWords, getFormerWords,
 };

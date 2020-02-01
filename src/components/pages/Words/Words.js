@@ -32,7 +32,7 @@ class Words extends React.Component {
   getLastTen = (e) => {
     e.preventDefault();
     this.setState({ after: this.state.words[0].word });
-    wordData.getTenWords(this.state.former)
+    wordData.getLastTenWords(this.state.words[0].word)
       .then((words) => {
         this.setState({ words, former: words[0].word });
       })

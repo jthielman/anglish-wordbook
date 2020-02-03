@@ -4,6 +4,9 @@ import PropTypes from 'prop-types';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
+// import wordData from '../../../helpers/data/wordData';
+import Seek from '../Seek/Seek';
+
 import './MyNavbar.scss';
 
 class MyNavbar extends React.Component {
@@ -61,6 +64,7 @@ class MyNavbar extends React.Component {
       <div className="MyNavbar">
         <nav className="navbar navbar-expand navbar-light">
           <Link className="nav-brand" to="/">Anglish Wordbook</Link>
+          <Seek />
           { buildNavbar() }
         </nav>
       </div>

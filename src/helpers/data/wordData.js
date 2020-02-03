@@ -4,8 +4,7 @@ import apiKeys from '../apiKeys.json';
 const baseUrl = apiKeys.firebaseKeys.databaseURL;
 
 const getWords = () => new Promise((resolve, reject) => {
-  // axios.get(`${baseUrl}/words.json?orderBy="word"&limitToFirst=20`)
-  axios.get(`${baseUrl}/words.json?orderBy="word"&startAt="a"&endAt="b"`)
+  axios.get(`${baseUrl}/words.json`)
     .then((result) => {
       const wordsObj = result.data;
       const words = [];

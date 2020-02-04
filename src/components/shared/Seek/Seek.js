@@ -22,6 +22,7 @@ class Seek extends React.Component {
   seekWords = (e) => {
     e.preventDefault();
     this.props.siftWords(this.state.searchTerm);
+    // this.props.history.push('/words');
   }
 
   seekChange = (e) => {

@@ -28,7 +28,18 @@ class Words extends React.Component {
   }
 
   componentDidMount() {
+    /* const { siftedWords } = this.props;
+    if (siftedWords === undefined) { */
     this.getWords();
+    /* } else {
+      this.setState({ words: siftedWords });
+    } */
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.siftedWords !== this.props.siftedWords) {
+      this.setState({ words: this.props.siftedWords });
+    }
   }
 
   getLastTen = (e) => {

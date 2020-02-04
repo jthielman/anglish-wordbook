@@ -12,6 +12,8 @@ import './MyNavbar.scss';
 class MyNavbar extends React.Component {
   static propTypes = {
     authed: PropTypes.bool,
+    getAllWords: PropTypes.func,
+    siftWords: PropTypes.func,
   }
 
   loginClickEvent = (e) => {
@@ -64,7 +66,7 @@ class MyNavbar extends React.Component {
       <div className="MyNavbar">
         <nav className="navbar navbar-expand navbar-light">
           <Link className="nav-brand" to="/">Anglish Wordbook</Link>
-          <Seek />
+          <Seek getAllWords={this.props.getAllWords} siftWords={this.props.siftWords} />
           { buildNavbar() }
         </nav>
       </div>

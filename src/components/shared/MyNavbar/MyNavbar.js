@@ -4,16 +4,11 @@ import PropTypes from 'prop-types';
 import firebase from 'firebase/app';
 import 'firebase/auth';
 
-// import wordData from '../../../helpers/data/wordData';
-import Seek from '../Seek/Seek';
-
 import './MyNavbar.scss';
 
 class MyNavbar extends React.Component {
   static propTypes = {
     authed: PropTypes.bool,
-    getAllWords: PropTypes.func,
-    siftWords: PropTypes.func,
   }
 
   loginClickEvent = (e) => {
@@ -34,9 +29,6 @@ class MyNavbar extends React.Component {
         return (
           <ul className='navbar-nav ml-auto'>
             <li className='nav-item'>
-              <Seek getAllWords={this.props.getAllWords} siftWords={this.props.siftWords} />
-            </li>
-            <li className='nav-item'>
               <Link className='nav-link' to='/'>Home</Link>
             </li>
             <li className='nav-item'>
@@ -54,9 +46,6 @@ class MyNavbar extends React.Component {
       return (
         <ul className='navbar-nav ml-auto'>
           <li className='nav-item'>
-            <Seek getAllWords={this.props.getAllWords} siftWords={this.props.siftWords} />
-          </li>
-          <li className='nav-item'>
             <Link className='nav-link' to='/'>Home</Link>
           </li>
           <li className='nav-item'>
@@ -72,7 +61,6 @@ class MyNavbar extends React.Component {
       <div className="MyNavbar">
         <nav className="navbar navbar-expand navbar-light">
           <Link className="nav-brand" to="/">Anglish Wordbook</Link>
-          {/* <Seek getAllWords={this.props.getAllWords} siftWords={this.props.siftWords} /> */}
           { buildNavbar() }
         </nav>
       </div>

@@ -78,10 +78,12 @@ class App extends React.Component {
     return (
       <div className='App'>
         <Router>
-          <MyNavbar authed={authed} getAllWords={this.getAllWords} siftWords={this.siftWords} />
+          <MyNavbar authed={authed} />
           <Switch>
             <Route path='/' exact component={Home} authed={authed} />
-            <Route path='/words' exact render={(routeProps) => (<Words {...routeProps} authed={authed} adweshWord={this.adweshWord} siftedWords={this.state.searchResults} />)} />
+            <Route path='/words' exact render={
+              (routeProps) => (<Words {...routeProps} authed={authed} adweshWord={this.adweshWord} siftedWords={this.state.searchResults} getAllWords={this.getAllWords} siftWords={this.siftWords} />)
+              } />
             <PrivateRoute path='/words/new' exact component={WordForm} authed={authed} />
             <PrivateRoute path='/words/:wordId/adight' exact component={WordForm} authed={authed} />
             <Route path='/words/:wordId' exact render={(routeProps) => (<OneWord {...routeProps} authed={authed} adweshWord={this.adweshWord} />)} />

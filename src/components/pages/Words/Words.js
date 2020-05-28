@@ -5,12 +5,15 @@ import authData from '../../../helpers/data/authData';
 import wordData from '../../../helpers/data/wordData';
 
 import HitWord from '../../shared/HitWord/HitWord';
+import Seek from '../../shared/Seek/Seek';
 
 import './Words.scss';
 
 class Words extends React.Component {
   static propTypes = {
     adweshWord: PropTypes.func,
+    getAllWords: PropTypes.func,
+    siftWords: PropTypes.func,
   }
 
   state = {
@@ -67,6 +70,9 @@ class Words extends React.Component {
     return (
       <div className='Words container'>
         <h1>Words</h1>
+        <div className='nav-item'>
+              <Seek getAllWords={this.props.getAllWords} siftWords={this.props.siftWords} />
+            </div>
         <div className='row flex-nowrap justify-content-between'>
         <div><button className='btn btn-outline-secondary' onClick={this.getLastTen}>Former</button></div>
         <div className='dictionary-container d-flex flex-column flex-wrap'>

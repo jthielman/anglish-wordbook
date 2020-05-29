@@ -15,7 +15,6 @@ class Seek extends React.Component {
 
   openSeekInput = (e) => {
     e.preventDefault();
-    // document.getElementById('seek-menu').classList.toggle('show');
     this.props.getAllWords();
   }
 
@@ -23,7 +22,6 @@ class Seek extends React.Component {
     e.preventDefault();
     this.props.siftWords(this.state.searchTerm);
     document.getElementById('seekWordInput').value = '';
-    // document.getElementById('seek-menu').classList.toggle('show');
   }
 
   seekChange = (e) => {
@@ -33,29 +31,14 @@ class Seek extends React.Component {
 
   render() {
     return (
-      <div>
-      {/* <div className='Seek dropdown show'>
-        <button onClick={this.openSeekInput} className='btn btn-outline-light' type='button' id='dropdownMenuButton' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>
-          Seek
-        </button>
-        <div id='seek-menu' className='dropdown-menu' aria-labelledby='dropdownMenuButton' x-placement='bottom-start'>
-          <form role='search' className='px-3 py-2'>
-            <div className='form-group'>
-              <input onChange={this.seekChange} type='search' className='form-control' id='seekWordInput' placeholder="Seek a word..." aria-label="Sift through words" />
-            </div>
-            <button onClick={this.seekWords} type='submit' className='btn btn-outline-info'>Seek!</button>
-          </form>
-        </div>
-      </div> */}
-        <form role='search' className='px-3 py-2'>
-          <div className='form-row'>
-            <div className='form-group col-md-6'>
-              <input onClick={this.openSeekInput} onChange={this.seekChange} type='search' className='form-control' id='seekWordInput' placeholder="Seek a word..." aria-label="Sift through words" />
-            </div>
+      <form role='search' className='px-3 py-2'>
+        <div className='input-group mb-3'>
+          <input onClick={this.openSeekInput} onChange={this.seekChange} type='search' className='form-control' id='seekWordInput' placeholder="Seek a word..." aria-label="Sift through words" />
+          <div className='input-group-append'>
             <button onClick={this.seekWords} type='submit' className='btn btn-outline-info'>Seek!</button>
           </div>
-        </form>
-      </div>
+        </div>
+      </form>
     );
   }
 }

@@ -63,7 +63,7 @@ class App extends React.Component {
     const searchResults = [];
     searchTerm.toLowerCase();
     wordsArr.forEach((word) => {
-      // compare ${value} to the ${planet.name} and ${planet.description} strings:
+      // compare ${searchTerm} to the ${word.word} and ${word.meaning} strings:
       if (word.word.toLowerCase().includes(searchTerm) || word.meaning.toLowerCase().includes(searchTerm)) {
         // and then put the matching objects into their own array:
         searchResults.push(word);

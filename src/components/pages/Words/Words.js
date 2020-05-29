@@ -70,15 +70,15 @@ class Words extends React.Component {
     return (
       <div className='Words container'>
         <h1>Words</h1>
-        <div className='nav-item'>
-              <Seek getAllWords={this.props.getAllWords} siftWords={this.props.siftWords} />
-            </div>
-        <div className='row flex-nowrap justify-content-between'>
-        <div><button className='btn btn-outline-secondary' onClick={this.getLastTen}>Former</button></div>
-        <div className='dictionary-container d-flex flex-column flex-wrap'>
-          { this.state.words.map((word) => <HitWord key={word.id} word={word} user={user} adweshWord={this.props.adweshWord} getWords={this.getWords}>{word.word}</HitWord>) }
+        <div className='mb-4'>
+          <Seek getAllWords={this.props.getAllWords} siftWords={this.props.siftWords} />
         </div>
-        <div><button className='btn btn-outline-secondary' onClick={this.getNextTen}>After</button></div>
+        <div className='row flex-nowrap justify-content-between'>
+          <div><button className='btn btn-outline-secondary' onClick={this.getLastTen}>Former</button></div>
+          <div className='dictionary-container d-flex flex-column flex-wrap'>
+            { this.state.words.map((word) => <HitWord key={word.id} word={word} user={user} adweshWord={this.props.adweshWord} getWords={this.getWords}>{word.word}</HitWord>) }
+          </div>
+          <div><button className='btn btn-outline-secondary' onClick={this.getNextTen}>After</button></div>
         </div>
       </div>
     );

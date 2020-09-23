@@ -1,7 +1,7 @@
 # Anglish Wordbook
 
 ## Description
-Anglish is a version of English that avoids borrowed words from French, Latin and Greek in favor of Anglo-Saxon words and word roots, and sometimes reviving old word roots that were pushed out of the language by those borrowings.  Enjoying the thought experiment but weary of trawling through spreadsheet-style word lists to search for Anglish words, I created a React app that makes the searching process more user-friendly, and also allows the adding, editing and deleting of words as they are found, changed or rejected.  Site lay out and style are Bootstrap-based, and I employed React Router DOM to enhance the user experience by generating separate pages for single words, the word lists and the create/update form.
+Anglish is a version of English that avoids borrowed words from French, Latin and Greek in favor of Anglo-Saxon words and word roots, and sometimes revives old word roots that were pushed out of the language by those borrowings.  Enjoying the thought experiment but weary of trawling through spreadsheet-style word lists to search for Anglish words, I created a React app that makes the searching process more user-friendly, and also allows the adding, editing and deleting of words as they are found, changed or rejected.  Site lay out and style are Bootstrap-based, and I employed React Router DOM to enhance the user experience by generating separate pages for single words, the word lists and the create/update form.
 
 ## Screenshots
 The home page explains the thought behind Anglish:
@@ -17,7 +17,7 @@ Here's the form by which a user enters info for a new word:
 ![New word form](https://raw.githubusercontent.com/jthielman/anglish-wordbook/master/screenshots/anglish-wordbook-form.png)
 
 ## Technologies used:
-HTML, SCSS, JavaScript, Version Control with Github, Webpack, React, C#, ASP.NET Core 3.1, Dapper, T-SQL
+HTML, SCSS, JavaScript, Version Control with Github, Webpack, React ...
 
 ## How to Run
 - Clone down this project
